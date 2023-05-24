@@ -14,12 +14,12 @@ task related errors
 - "task_missing_zeros" -> the answer given by the child was missing some zeros (e.g., correct: 630, given: 63)
 - "number_twist" -> there are exactly two digits in the (e.g., correct: 540, given: 450)
 
-To try the classifier install requirements and run the main script:
-pip install -r requirements.txt
-python main.py <correct_answer_int> <processed_answer_int>
+To try the classifier install requirements and run the main script:  
+pip install -r requirements.txt  
+python main.py <correct_answer_int> <processed_answer_int>  
 
-example:
-python main.py 41000 41
+example:  
+python main.py 41000 41. 
 
 -> returns: robot_late
 
