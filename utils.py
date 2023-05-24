@@ -397,6 +397,7 @@ def predict_error_2(row):
         return 'child_task'
 
 #TEST
+print(similarity_end('vierduizendtweehonderd','tweehonderd'))
 '''
 print('test number_in_words')
 print(number_in_words(4200) == 'vierduizendtweehonderd')
@@ -423,15 +424,15 @@ print('test get_variation')
 print(get_variation(1200) == 'twaalfhonderd')
 print(get_variation(5300) == 'drieënvijftighonderd')
 
-'''
 
-#print('test check_task_error')
-#print(check_task_error(270, 27, 9, 30) == True)
-#print(check_task_error(400, 100, 5, 80) == True)
-#print(check_task_error(13600,1350,17,800) == False)
-#print(check_task_error(144,20,8,18) == False)
 
-'''
+print('test check_task_error')
+print(check_task_error(270, 27, 9, 30) == True)
+print(check_task_error(400, 100, 5, 80) == True)
+print(check_task_error(13600,1350,17,800) == False)
+print(check_task_error(144,20,8,18) == False)
+
+
 print("Test check_added_zero")
 print(check_added_zero(1000, 10000) == True)
 print(check_added_zero(40, 40000) == True)
