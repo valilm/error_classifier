@@ -15,20 +15,20 @@ def similarity_start(correct_answer, processed_answer):
     :param correct_answer (int): the correct answer of the multiplication problem
     :param processed_answer (int): the answer processed by the robot
     :return: similarity_score (float): percentage of similarity 
-    """ 
-    n = min(len(correct_answer), len(processed_answer))
-    for i in range(n):
-        #print(i)
-        if correct_answer[i] != processed_answer[i]:
-            return i / n
+    """
         
     # score should be 1 only if the processed answer is a subset of the correct_answer, not the other way around
     # because it matters which of the numbers is the given answer by the child, if the child said 250 
     # but the answer was 150, then it was not the robots fault
     if(len(processed_answer) <= len(correct_answer)): 
-        return n / min(len(correct_answer), len(processed_answer))
+        n = len(processed_answer)
+        for i in range(n):
+            if correct_answer[i] != processed_answer[i]:
+                return i / n
+        return 1
     else:
         return 0
+
 
     
 def similarity_end(correct_answer, processed_answer):
@@ -38,18 +38,17 @@ def similarity_end(correct_answer, processed_answer):
     :param correct_answer (int): the correct answer of the multiplication problem
     :param processed_answer (int): the answer processed by the robot
     :return: similarity_score (float): percentage of similarity 
-    """ 
-    n = min(len(correct_answer), len(processed_answer))
-    similarity_score = 0
-    for i in range(1, n+1):
-        if correct_answer[-i] != processed_answer[-i]:
-            similarity_score = (i-1)/n
-            return(similarity_score)
-    if(len(processed_answer) <= len(correct_answer)):
-        return n / min(len(correct_answer), len(processed_answer))
+    """
+    if (len(processed_answer) <= len(correct_answer)):
+        n = len(processed_answer)
+
+        for i in range(1, n + 1):
+            if correct_answer[-i] != processed_answer[-i]:
+                return (i - 1) / n
+
+        return 1
     else:
         return 0
-
 
     
 def is_there_variation(number):
