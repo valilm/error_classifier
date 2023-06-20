@@ -81,6 +81,40 @@ def get_variation(number):
     return spoken_variation
 
 
+def check_correction_trial(correct_answer, processed_answer):
+    # Convert the answers to strings
+    correct_answer_str = str(correct_answer)
+    processed_answer_str = str(processed_answer)
+
+    # Check if the processed_answer is two copies of the correct_answer
+    if processed_answer_str == correct_answer_str * 2:
+        return True
+
+    # Check if the last part of processed_answer is similar to correct_answer
+    if processed_answer_str.endswith(correct_answer_str):
+        remainder = processed_answer_str[len(correct_answer_str):]
+        if remainder.isdigit():
+            return True
+
+    if processed_answer_str == correct_answer_str[-2:] * 2:
+        return True
+
+    return False
+
+
+def check_40_case(correct_answer, processed_answer):
+    # Convert the answers to strings
+    correct_answer_str = str(correct_answer)
+    processed_answer_str = str(processed_answer)
+
+    # Check if the processed_answer is a misinterpretation of "40" as "4"
+    if len(correct_answer_str) > 1 and correct_answer_str.endswith('40'):
+        suffix = correct_answer_str[:-2] + '04'
+        if processed_answer_str == suffix:
+            return True
+
+    return False
+
 def check_robot_error(correct_answer, processed_answer):
     """
     check_robot_error checks if it is likely an error related to the robot, or in particular to speech recognition error
@@ -111,6 +145,10 @@ def check_robot_error(correct_answer, processed_answer):
         
 
     if sim_start == 1 or sim_end == 1:
+        return True
+    elif check_correction_trial(correct_answer, processed_answer):
+        return True
+    elif check_40_case(correct_answer, processed_answer):
         return True
     else:
         return False

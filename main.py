@@ -60,12 +60,14 @@ def classifier(args):
             # you have to wait a little longer
             return 'robot_soon'
 
-        if sim_start == 1:
+        if sim_start == 1 or check_40_case(correct_answer_int, processed_answer_int):
             print("Oh sorry I did not fully get that. Please repeat your answer once my eyes turn green.")
             return ('robot_late')
         elif sim_end == 1:
             print("Oh sorry I did not fully get that. Please repeat your answer once my eyes turn green.")
             return('robot_soon')
+        elif check_correction_trial(correct_answer_int, processed_answer_int):
+            return('robot_correction')
         elif check_added_zero(correct_answer_int, processed_answer_int):
             print("You almost got it. We just need to get rid of some zeros.")
             return('task_extra_zeros')
