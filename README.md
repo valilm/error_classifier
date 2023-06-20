@@ -6,8 +6,9 @@ Use Case: Children of elementary school solving multiplication math problems whi
 The error classifier predicts the type of error based only on data of the mathematical task and the given answer, in this case multiplication problem. It takes the correct answer of the problem (product) and the answer that was processed by the robot and returns one of the following error types ('other_error' if none of the error types could be predicted):
 
 robot related errors
-- "robot_soon" -> speech recognition error where the child started talking too soon, so the beginning of the answer was missed (e.g, child said 42000, robot understood 1000)
-- "robot_late" -> speech recognition error where the child started talking too late, so the end of the answer was missed (e.g., child said 4800, robot understood 4008
+- "robot_soon" -> speech recognition error where the student started talking too soon, so the beginning of the answer was missed (e.g, participant said 42000, robot processed 1000)
+- "robot_late" -> speech recognition error where the student started talking too late, so the end of the answer was missed (e.g., participant said 4800, robot processed 4008
+- "robot_correction" -> speech recognitino error where the student repeated or corrected their answer immediatly and the robot processed both numbers and combined them to one (e.g., participant said 40 ... 40!, robot processed 4040)
 
 task related errors
 - "task_extra_zeros" -> the answer given by the child was just off by one or more extra zeros (e.g., correct: 7000, given: 70000)
